@@ -7,7 +7,6 @@
 #include "XSE_dlg.h"
 #include "XSTE_dlg.h"
 
-#include <boost/algorithm/string.hpp>
 #include <fstream>
 #include "aud_file.h"
 #include "directoriesdlg.h"
@@ -20,8 +19,6 @@
 #include "xcc_dirs.h"
 #include "xcc_log.h"
 #include "xste.h"
-
-using namespace boost;
 
 IMPLEMENT_DYNCREATE(CMainFrame, CFrameWnd)
 
@@ -322,7 +319,7 @@ void CMainFrame::find_mixs(const string& dir, t_game game, string filter)
 			{
 				if (fd.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY)
 					continue;
-				const string fname = to_lower_copy(string(fd.cFileName));
+				const string fname = to_lower(string(fd.cFileName));
 				xcc_log::write_line("finds: " + fname, 1);
 				Cmix_file f;
 				if (!f.open(dir + fname))
@@ -844,7 +841,7 @@ void CMainFrame::OnLaunchXTW_TS()
 				Ctheme_data e;
 				e.name(Cfname(fd.cFileName).get_ftitle());
 				e.length(static_cast<float>(f.get_c_samples()) / f.get_samplerate() / 60);
-				theme_list[to_upper_copy(Cfname(b).get_ftitle())] = e;
+				theme_list[to_upper(Cfname(b).get_ftitle())] = e;
 			}
 		}
 		while (FindNextFile(findhandle, &fd));
@@ -855,12 +852,12 @@ void CMainFrame::OnLaunchXTW_TS()
 	// "1=INTRO" << endl;
 	int j = 51;
 	for (auto& i : theme_list)
-		g << n(j++) << '=' << to_upper_copy(i.first) << endl;
+		g << n(j++) << '=' << to_upper(i.first) << endl;
 	g << endl;
 	for (auto& i : theme_list)
 	{
 		const Ctheme_data& e = i.second;
-		g << '[' << to_upper_copy(i.first) << ']' << endl
+		g << '[' << to_upper(i.first) << ']' << endl
 			<< "Name=" << e.name() << endl;
 		if (e.normal())
 			g << "Length=" << e.length() << endl;
@@ -918,7 +915,7 @@ void CMainFrame::launch_xtw(t_game game)
 				Ctheme_data e;
 				e.name("THEME:" + Cfname(b).get_ftitle());
 				e.sound(Cfname(b).get_ftitle());
-				theme_list[to_upper_copy(Cfname(b).get_ftitle())] = e;
+				theme_list[to_upper(Cfname(b).get_ftitle())] = e;
 				if (xste_open)
 					xste.csf_f().set_value(e.name(), Ccsf_file::convert2wstring(Cfname(fname).get_ftitle()), "");
 
@@ -933,12 +930,12 @@ void CMainFrame::launch_xtw(t_game game)
 	g << "[Themes]" << endl;
 	int j = 51;
 	for (auto& i : theme_list)
-		g << n(j++) << '=' << to_upper_copy(i.first) << endl;
+		g << n(j++) << '=' << to_upper(i.first) << endl;
 	g << endl;
 	for (auto& i : theme_list)
 	{
 		const Ctheme_data& e = i.second;
-		g << '[' << to_upper_copy(i.first) << ']' << endl;
+		g << '[' << to_upper(i.first) << ']' << endl;
 		if (!e.name().empty())
 			g << "Name=" << e.name() << endl;
 		if (!e.normal())

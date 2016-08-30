@@ -24,8 +24,8 @@ static int split_key_now(const string& key, string& name, string& value)
 	int i = key.find('=');
 	if (i == string::npos)
 		return 1;
-	name = trim_copy(key.substr(0, i));
-	value = trim_copy(key.substr(i + 1));
+	name = trim_field(key.substr(0, i));
+	value = trim_field(key.substr(i + 1));
 	return 0;
 }
 
@@ -76,7 +76,7 @@ int Cini_reader::process_line(string line)
 				process_section_end();
 			m_section_open = true;
 			line = line.substr(first_non_ws, last_non_ws - first_non_ws);
-			return process_section_start(m_lower_case ? to_lower_copy(line) : line);
+			return process_section_start(m_lower_case ? to_lower(line) : line);
 		default:
 			if (!process_section())
 				return 0;
@@ -94,7 +94,7 @@ int Cini_reader::process_line(string line)
 					{
 						string name = line.substr(first_non_ws, last_non_ws - first_non_ws + 1);
 						if (m_lower_case)
-							boost::to_lower(name);
+							to_lower(name);
 						i++;
 						while (i < line.length())
 						{

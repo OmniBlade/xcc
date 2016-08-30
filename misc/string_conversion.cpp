@@ -112,6 +112,53 @@ string nh(int l, __int64 v)
 	return s;
 }
 
+bool is_white(char v)
+{
+	switch (v)
+	{
+	case '\t':
+	case ' ':
+		return true;
+	default:
+		return false;
+	}
+}
+
+void ltrim(string& s)
+{
+	while (!s.empty() && is_white(s[0]))
+		s.erase(0, 1);
+}
+
+void rtrim(string& s)
+{
+	while (!s.empty() && is_white(s[s.length() - 1]))
+		s.erase(s.length() - 1, 1);
+}
+
+string to_lower(const string& s)
+{
+	string r;
+	for (int i = 0; i < s.length(); i++)
+		r += tolower(s[i]);
+	return r;
+}
+
+string to_normal(string s)
+{
+	if (!s.empty())
+		s[0] = toupper(s[0]);
+	return s;
+}
+
+string to_upper(const string& s)
+{
+	string r;
+	for (int i = 0; i < s.length(); i++)
+		r += toupper(s[i]);
+	return r;
+}
+
 string nwp(int l, unsigned int v)
 {
 	string r;

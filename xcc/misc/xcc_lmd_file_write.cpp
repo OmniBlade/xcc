@@ -6,7 +6,7 @@
 
 void Cxcc_lmd_file_write::add_fname(const string& fname)
 {
-	m_index.push_back(to_lower_copy(fname));
+	m_index.push_back(to_lower(fname));
 }
 
 Cvirtual_binary Cxcc_lmd_file_write::write(t_game game) const

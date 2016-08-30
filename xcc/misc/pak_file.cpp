@@ -49,7 +49,7 @@ int Cpak_file::post_open()
 		r += name.length() + 1;
 		next_offset = *reinterpret_cast<const __int32*>(r);
 		e.size = (next_offset ? next_offset: get_size()) - e.offset;
-		m_index[to_lower_copy(name)] = e;
+		m_index[to_lower(name)] = e;
 	}
 	while (next_offset);
 	return 0;

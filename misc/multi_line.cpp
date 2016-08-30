@@ -1,8 +1,7 @@
 #include "multi_line.h"
 
-#include <boost/algorithm/string.hpp>
+#include "string_conversion.h"
 
-using namespace boost;
 
 Cmulti_line::Cmulti_line(const string& is)
 {

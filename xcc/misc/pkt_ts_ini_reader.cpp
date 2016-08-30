@@ -47,7 +47,7 @@ int Cpkt_ts_ini_reader::process_key(const string& name, const string& value)
 	switch (m_section)
 	{
 	case sei_multi_maps:
-		m_map_list[to_lower_copy(value)];
+		m_map_list[to_lower(value)];
 		break;
 	case sei_unknown:
 		switch (find_id(name, map_code, mai_unknown))
@@ -105,8 +105,8 @@ void Cpkt_ts_ini_reader::write_report(ostream& os) const
 		if (xste_available)
 		{
 			Ccsf_file& csf_f = xste.csf_f();
-			if (csf_f.has_name(to_lower_copy(description)))
-				description = csf_f.get_converted_value(to_lower_copy(description));
+			if (csf_f.has_name(to_lower(description)))
+				description = csf_f.get_converted_value(to_lower(description));
 		}
 		os << "<tr><td><a href=" << i->first << ".html>" << i->first << "</a><td>" << description << "<td>" << i->second.m_gamemode << "<td><img src=" << i->first << "_pv.png>";
 		// page += "\"" + i->first + "\", " + "\"" + description + "\",\n";

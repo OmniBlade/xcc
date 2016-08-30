@@ -996,11 +996,11 @@ Cvirtual_binary Cxcc_level::save_ini() const
 		{
 			if (j == string::npos)
 			{
-				os << index++ << '=' << trim_copy(briefing_data.substr(i)) << "\r\n";
+				os << index++ << '=' << trim(briefing_data.substr(i)) << "\r\n";
 				break;
 			}
 			j += 2;
-			os << index++ << '=' << trim_copy(briefing_data.substr(i, j - i)) << "\r\n";
+			os << index++ << '=' << trim(briefing_data.substr(i, j - i)) << "\r\n";
 			i = j;
 		}
 		os << "\r\n";

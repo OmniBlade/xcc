@@ -201,7 +201,7 @@ string xcc_dirs::get_main_mix(t_game game)
 
 static void set_path(string s, string& path)
 {
-	boost::to_lower(s);
+	to_lower(s);
 	if (!s.empty() && s.back() != '\\')
 		s += '\\';	
 	path = s;

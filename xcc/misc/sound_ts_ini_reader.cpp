@@ -51,7 +51,7 @@ int Csound_ts_ini_reader::process_key(const string& name, const string& value)
 	switch (m_section)
 	{
 	case sei_sounds:
-		m_sound_list[to_lower_copy(value)];
+		m_sound_list[to_lower(value)];
 		break;
 	case sei_unknown:
 		switch (find_id(name, sound_code, soi_unknown))

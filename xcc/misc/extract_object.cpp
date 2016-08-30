@@ -1,7 +1,6 @@
 #include "stdafx.h"
 #include "extract_object.h"
 
-#include <boost/algorithm/string.hpp>
 #include <fstream>
 #include "aud_file.h"
 #include "file31.h"

@@ -2,7 +2,6 @@
 #include "XSTE_dlg.h"
 #include "XSTE_edit_dlg.h"
 
-#include <boost/algorithm/string.hpp>
 #include "SearchStringDlg.h"
 #include "mix_file.h"
 #include "string_conversion.h"
@@ -126,8 +125,8 @@ static string get_cat(const string& name)
 	int a = name.find(':');
 	int b = name.find('_');
 	if (a == string::npos)
-		return b == string::npos ? "Other" : to_upper_copy(name.substr(0, b));
-	return to_upper_copy(b == string::npos ? name.substr(0, a) : name.substr(0, min(a, b)));
+		return b == string::npos ? "Other" : to_upper(name.substr(0, b));
+	return to_upper(b == string::npos ? name.substr(0, a) : name.substr(0, min(a, b)));
 }
 
 int CXSTE_dlg::get_cat_id(const string& name) const

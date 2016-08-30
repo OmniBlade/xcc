@@ -175,7 +175,7 @@ Ccc_file::Ccc_file(bool read_on_open):
 		if (m_read_on_open)
 			m_f.close();
 #ifndef NO_FT_SUPPORT
-		Cfname fname = to_lower_copy(name);
+		Cfname fname = to_lower(name);
 		if (fname.get_fext() == ".mmx")
 		{
 			fname.set_ext(".map");

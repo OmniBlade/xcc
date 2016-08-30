@@ -15,10 +15,11 @@ static string get_fname()
 
 static int get_ft_crc()
 {
-  boost::crc_32_type crc;
+	Ccrc crc;
+	crc.init();
 	for (int i = 0; i < ft_count; i++)
-		crc.process_bytes(ft_name[i], strlen(ft_name[i]));
-	return crc();
+		crc.do_block(ft_name[i], strlen(ft_name[i]));
+	return crc.get_crc();
 }
 
 static int write_int(Cfile32& f, int32_t v)

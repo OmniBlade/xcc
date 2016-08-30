@@ -17,7 +17,7 @@ void write_int(byte*& w, int v)
 string read_string(const byte*& r)
 {
 	int cb_s = read_int(r);
-	string s = to_lower_copy(string(reinterpret_cast<const char*>(r), cb_s));
+	string s = to_lower(string(reinterpret_cast<const char*>(r), cb_s));
 	r += cb_s;
 	return s;
 }

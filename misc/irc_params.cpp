@@ -1,10 +1,8 @@
 #include "irc_params.h"
 
-#include <boost/algorithm/string.hpp>
 #include <string_conversion.h>
 #include <xbt/data_ref.h>
 
-using namespace boost;
 using namespace std;
 
 void Circ_params::clear()

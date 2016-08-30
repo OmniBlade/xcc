@@ -81,7 +81,7 @@ int Ctheme_ts_ini_reader::process_key(const string& name, const string& value)
 	{
 	case sei_themes:
 		if (!value.empty())
-			m_theme_list[to_lower_copy(value)];
+			m_theme_list[to_lower(value)];
 		break;
 	case sei_unknown:
 		switch (find_id(name, theme_code, thi_unknown))
@@ -93,7 +93,7 @@ int Ctheme_ts_ini_reader::process_key(const string& name, const string& value)
 			m_theme_list[m_current_theme].length(atof(value.c_str()));
 			break;
 		case thi_normal:
-			m_theme_list[m_current_theme].normal(atob(to_lower_copy(value)));
+			m_theme_list[m_current_theme].normal(atob(to_lower(value)));
 			break;
 		case thi_scenario:
 			m_theme_list[m_current_theme].scenario(atoi(value.c_str()));
@@ -105,7 +105,7 @@ int Ctheme_ts_ini_reader::process_key(const string& name, const string& value)
 			m_theme_list[m_current_theme].sound(value);
 			break;
 		case thi_repeat:
-			m_theme_list[m_current_theme].repeat(atob(to_lower_copy(value)));
+			m_theme_list[m_current_theme].repeat(atob(to_lower(value)));
 			break;
 		default:
 			return 1;
